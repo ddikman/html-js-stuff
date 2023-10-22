@@ -2,21 +2,23 @@
   let expanded = false;
 </script>
 
-<div id="nav-overlay" class:show={expanded}>&nbsp;</div>
-<navigation class:expanded>
-  <button on:blur={() => expanded = false} on:click={() => expanded =! expanded}>
-    <div class="line">&nbsp;</div>
-    <div class="menu-container">
-      <ul>
-        <li><a href="#top">Top</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
-    <div class="line">&nbsp;</div>
-  </button>
-</navigation>
+<div id="nav-menu" class:expanded>
+  <div id="nav-overlay">&nbsp;</div>
+  <navigation>
+    <button on:blur={() => expanded = false} on:click={() => expanded =! expanded}>
+      <div class="line">&nbsp;</div>
+      <div class="menu-container">
+        <ul>
+          <li><a href="#top">Top</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="line">&nbsp;</div>
+    </button>
+  </navigation>
+</div>
 
 <style>
 
@@ -96,7 +98,7 @@
 
   @media screen and (max-width: 1024px) {
 
-    #nav-overlay.show {
+    #nav-menu.expanded #nav-overlay {
       display: block;
     }
 
@@ -109,7 +111,7 @@
       }
     }
 
-    #nav-overlay.show {
+    #nav-menu.expanded #nav-overlay {
       animation-name: fade-in;
       animation-duration: 0.3s;
       animation-timing-function: ease-in-out;
@@ -138,7 +140,7 @@
       min-width: 24px;
     }
 
-    navigation:not(.expanded) .menu-container {
+    #nav-menu:not(.expanded) navigation .menu-container {
       display: none;
     }
 
@@ -155,7 +157,7 @@
       }
     }
 
-    navigation.expanded ul {
+    #nav-menu.expanded navigation ul {
       list-style-type: none;
       padding: 0;
       text-align: right;
